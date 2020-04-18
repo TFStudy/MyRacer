@@ -1,0 +1,6 @@
+rootProject.name='MyRacer'
+include ':app'
+include ':Common'
+include ':Home'
+include ':Core'
+include ':Net'
