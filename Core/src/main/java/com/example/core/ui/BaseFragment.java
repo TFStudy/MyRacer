@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -39,6 +40,9 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
      */
     protected abstract void createPresenter();
 
+    /**
+     * 初始化页面动作
+     */
     protected abstract void initEvent();
 
     /**
@@ -64,6 +68,16 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
      */
     protected void showMsg(String msg) {
         Toast.makeText(getContext(), "" + msg, Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * 获取id
+     * @param viewId
+     * @param <T>
+     * @return
+     */
+    protected <T extends View> T $(@IdRes int viewId){
+        return this.getView().findViewById(viewId);
     }
 
     /**
