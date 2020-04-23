@@ -5,8 +5,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.lifecycle.LifecycleOwner;
+
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.example.common.RouterPath;
+import com.example.common.router.RouterPath;
 import com.example.core.ui.BaseActivity;
 import com.example.home.R;
 import com.example.home.contract.HomeContract;
@@ -58,5 +60,10 @@ public class HomeActivity extends BaseActivity<HomePresenter>implements HomeCont
     @Override
     public void failed(Throwable throwable) {
         showMsg(throwable.getMessage());
+    }
+
+    @Override
+    public LifecycleOwner getLifecycleOwner() {
+        return this;
     }
 }

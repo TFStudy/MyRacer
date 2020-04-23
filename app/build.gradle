@@ -30,6 +30,10 @@ android {
         }
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -45,6 +49,11 @@ dependencies {
     annotationProcessor libsInfo.aroutercompiler
 
     implementation project(path: ':Common')
+    implementation project(path: ':ImageLoader')
+    if (isNeedUserCenterMoudle.toBoolean()) {
+        implementation project(path: ':UserCenter')
+    }
+
     if (isNeedHomeMoudle.toBoolean()) {
         implementation project(path: ':Home')
     }

@@ -3,12 +3,11 @@ package com.example.myracer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.example.common.RouterPath;
+import com.example.common.router.RouterPath;
 
 public class MainActivity extends AppCompatActivity {
 

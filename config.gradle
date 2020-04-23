@@ -1,15 +1,18 @@
-ext {
-    android = [
-            compileSdkVersion: 29,
-            buildToolsVersion: "29.0.3",
-            minSdkVersion    : 16,
-            targetSdkVersion : 29,
-            versionCode      : 1,
-            versionName      : "1.0",
-            applicationId    : "com.example.myracer"
+ext{
+    //工程项目的基本信息
+    android =[
+            compileSdkVersion:29,
+            buildToolsVersion:"29.0.3",
+            minSdkVersion :16,
+            targetSdkVersion: 29,
+            versionCode :1,
+            versionName :"1.0.0",
+
+            applicationId :"com.example.myracer"
     ]
 
-    dependenciesVersion = [
+    //依懒包的版本
+    dependenciesVersion=[
             appcompat:"1.1.0",
             constraintlayout:"1.1.3",
             arouter:"1.5.0",
@@ -25,14 +28,18 @@ ext {
             glide: "4.9.0",
             disklru:"2.0.2",
             autodisposearchcomponents:"1.0.0-RC3",
-            autodispose:"1.0.0-RC3"
+            autodispose:"1.0.0-RC3",
+
+            fastjsonAndroid: "1.1.70.android",
+            fastjson: "1.2.55"
     ]
 
-    dependencies = [
-            appcompat :"androidx.appcompat:appcompat:$dependenciesVersion.appcompat",
-            constraintlayout :"androidx.constraintlayout:constraintlayout:$dependenciesVersion.constraintlayout",
-            arouter :"com.alibaba:arouter-api:$dependenciesVersion.arouter",
-            aroutercompiler: "com.alibaba:arouter-compiler:$dependenciesVersion.aroutercompiler",
+    //所有的依赖包
+    dependencies =[
+            appcompat:"androidx.appcompat:appcompat:$dependenciesVersion.appcompat",
+            constraintlayout:"androidx.constraintlayout:constraintlayout:$dependenciesVersion.constraintlayout",
+            arouter: "com.alibaba:arouter-api:$dependenciesVersion.arouter",
+            aroutercompiler:"com.alibaba:arouter-compiler:$dependenciesVersion.aroutercompiler",
 
             retrofit:"com.squareup.retrofit2:retrofit:$dependenciesVersion.retrofit",
             retrofitgson:"com.squareup.retrofit2:converter-gson:$dependenciesVersion.retrofitgson",
@@ -45,7 +52,14 @@ ext {
             autodisposearchcomponents:"com.uber.autodispose:autodispose-android-archcomponents:$dependenciesVersion.autodisposearchcomponents",
             autodispose:"com.uber.autodispose:autodispose-android:$dependenciesVersion.autodispose",
             glide:"com.github.bumptech.glide:glide:$dependenciesVersion.glide",
-            disklru:"com.jakewharton:disklrucache:$dependenciesVersion.disklru"
+            disklru:"com.jakewharton:disklrucache:$dependenciesVersion.disklru",
+
+            fastjsonAndroid: "com.alibaba:fastjson:$dependenciesVersion.fastjsonAndroid",
+            fastjson:"com.alibaba:fastjson:$dependenciesVersion.fastjson"
     ]
 
+    urls=[
+            offline:"http://39.100.125.37:8088/",
+            online:"http://39.100.125.37:8088/"
+    ]
 }

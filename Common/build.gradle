@@ -13,15 +13,21 @@ android {
         versionCode projInfo.versionCode
         versionName projInfo.versionName
 
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
-
     }
 
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            //设置IsDebug标识 false为release模式
+            buildConfigField("boolean","IsDebug","false")
+        }
+        debug{
+            //设置IsDebug标识 true为debug模式
+            buildConfigField("boolean","IsDebug","true")
         }
     }
 
@@ -35,6 +41,8 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
+
+    //导入ARouter
     api libsInfo.arouter
 
     api libsInfo.retrofit
@@ -44,4 +52,7 @@ dependencies {
     api libsInfo.rxandroid
     api libsInfo.rxjava
     api libsInfo.okhttplog
+
+    api libsInfo.autodispose
+    api libsInfo.autodisposearchcomponents
 }

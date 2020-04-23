@@ -1,5 +1,7 @@
 package com.example.core;
 
-public interface IView {
+import androidx.lifecycle.LifecycleOwner;
 
+public interface IView {
+    LifecycleOwner getLifecycleOwner();
 }

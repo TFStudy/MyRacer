@@ -1,0 +1,70 @@
+if (isNeedUserCenterMoudle.toBoolean()) {
+    apply plugin: 'com.android.library'
+} else {
+    apply plugin: 'com.android.application'
+}
+
+def projInfo = rootProject.ext.android
+def libsInfo = rootProject.ext.dependencies
+android {
+    compileSdkVersion projInfo.compileSdkVersion
+    buildToolsVersion projInfo.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion projInfo.minSdkVersion
+        targetSdkVersion projInfo.targetSdkVersion
+        versionCode projInfo.versionCode
+        versionName projInfo.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+
+        //ARouter
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main {
+            if (isNeedUserCenterMoudle.toBoolean()) {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/debug/AndroidManifest.xml'
+            }
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation libsInfo.appcompat
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    //ARouter的注解
+    annotationProcessor libsInfo.aroutercompiler
+    implementation project(path: ':Core')
+    implementation project(path: ':Net')
+    implementation project(path: ':Common')
+    implementation project(path: ':ImageLoader')
+    implementation project(path: ':Storage')
+}

@@ -1,7 +1,8 @@
 apply plugin: 'com.android.library'
 
 def projInfo = rootProject.ext.android
-def libsInfo = rootProject.ext.dependencies
+def libIsnfo = rootProject.ext.dependencies
+def urls = rootProject.ext.urls
 
 android {
     compileSdkVersion projInfo.compileSdkVersion
@@ -15,13 +16,18 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
-
     }
 
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            //线上环境url
+            buildConfigField("String","BaseUrl","\""+urls.online+"\"")
+        }
+        debug{
+            //线下环境url
+            buildConfigField("String","BaseUrl","\""+urls.offline+"\"")
         }
     }
 
@@ -30,9 +36,12 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation libsInfo.appcompat
+    implementation 'androidx.appcompat:appcompat:1.1.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation project(path: ':Common')
+
+    implementation libIsnfo.fastjsonAndroid
+    implementation libIsnfo.fastjson
 }
